@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tanosofillingstation.AdministratorLogInController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tanosofillingstation.LoginWindowController">
    <left>
       <AnchorPane prefHeight="407.0" prefWidth="228.0" BorderPane.alignment="CENTER">
          <children>
@@ -42,7 +42,7 @@
                </font>
             </Label>
             <PasswordField fx:id="PSPassword" layoutX="113.0" layoutY="200.0" promptText="Password" />
-            <Button layoutX="20.0" layoutY="288.0" mnemonicParsing="false" onAction="#LogInButtonAction" prefHeight="26.0" prefWidth="253.0" style="-fx-background-color: #e3d991;" text="Log In">
+            <Button fx:id="BTLogIn" layoutX="20.0" layoutY="288.0" mnemonicParsing="false" onAction="#LogInButtonAction" prefHeight="26.0" prefWidth="253.0" style="-fx-background-color: #e3d991;" text="Log In">
                <font>
                   <Font size="16.0" />
                </font>

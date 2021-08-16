@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1220.0" style="-fx-background-color: #e3dfd3;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tanosofillingstation.EmployeeWindowController">
+   <top>
+      <AnchorPane prefHeight="64.0" prefWidth="1220.0" style="-fx-background-color: #e3d991;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="122.0" layoutY="15.0" prefWidth="107.0" text="1st July 2021">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="52.0" fitWidth="59.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/1200px-Shell_logo.svg.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="122.0" layoutY="33.0" prefWidth="107.0" text="12:30pm">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="610.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane layoutX="45.0" layoutY="48.0" prefHeight="149.0" prefWidth="511.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="257.0" minWidth="10.0" prefWidth="171.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="364.0" minWidth="10.0" prefWidth="340.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Vehicle Number:" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label text="Telephone Number:" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField promptText="Name" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+                  <TextField promptText="Vehicle number" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+                  <Label text="Customer Name:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField promptText="Telephone number" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </GridPane>
+            <GridPane layoutX="45.0" layoutY="292.0" prefHeight="55.0" prefWidth="511.0">
+              <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="BTTypeGasoline" alignment="CENTER" mnemonicParsing="false" onAction="#GasolineTypeButtonOnAction" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Gasoline" textAlignment="CENTER" />
+                  <Button fx:id="BTTypeFluids" alignment="CENTER" mnemonicParsing="false" onAction="#FluidTypeButtonOnAction" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Fluids" textAlignment="CENTER" GridPane.columnIndex="2" />
+                  <Button fx:id="BTTypeDiesel" alignment="CENTER" mnemonicParsing="false" onAction="#DieselTypeButtonOnAction" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Diesel" textAlignment="CENTER" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+            <Label layoutX="245.0" layoutY="257.0" text="Select Type:">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </left>
+   <bottom>
+      <AnchorPane prefHeight="340.0" prefWidth="1220.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane fx:id="PetrolGridPane" layoutX="69.0" layoutY="73.0" prefHeight="146.0" prefWidth="553.0">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Petrol" textAlignment="CENTER" />
+                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Engine Oil" textAlignment="CENTER" GridPane.columnIndex="2" />
+                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Super Petrol" textAlignment="CENTER" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+            <Label layoutX="227.0" layoutY="31.0" text="Select a product:">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Button alignment="CENTER" layoutX="909.0" layoutY="294.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Continue" textAlignment="CENTER" />
+            <Button alignment="CENTER" layoutX="1062.0" layoutY="294.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Cancel" textAlignment="CENTER" />
+            <GridPane fx:id="DieselGridPane" layoutX="69.0" layoutY="73.0" prefHeight="146.0" prefWidth="553.0" visible="false">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Diesel" textAlignment="CENTER" />
+                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Engine Oil" textAlignment="CENTER" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+            <GridPane fx:id="FluidGridPane" layoutX="69.0" layoutY="73.0" prefHeight="146.0" prefWidth="553.0" visible="false">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="ATF" textAlignment="CENTER" />
+                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Fuel Injector" textAlignment="CENTER" GridPane.columnIndex="2" />
+                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Brake Fluid" textAlignment="CENTER" GridPane.columnIndex="1" />
+                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Motor Flush" textAlignment="CENTER" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </bottom>
+   <right>
+      <AnchorPane prefHeight="606.0" prefWidth="610.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="548.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/Arh-avatar.jpg" />
+               </image>
+            </ImageView>
+            <GridPane layoutX="111.0" layoutY="128.0" prefHeight="465.0" prefWidth="403.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="235.0" minWidth="10.0" prefWidth="125.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="350.0" minWidth="10.0" prefWidth="278.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Litres Bought:" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label text="Price Paid:" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField promptText="Litres" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+                  <TextField promptText="Price" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+                  <Label text="Type:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label text="Product:" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label text="Price per Litre:" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="LBTypeUpdate" text="N/A" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="LBProductUpdate" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="LBPricePerLitreUpdate" text="¢N/A" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+            <Label layoutX="313.0" layoutY="48.0" text="Akuoko Konadu Akwasi">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </right>
+    <stylesheets>
+
+    </stylesheets>
+</BorderPane>

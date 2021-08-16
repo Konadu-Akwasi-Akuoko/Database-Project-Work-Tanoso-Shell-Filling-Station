@@ -11,7 +11,7 @@ public class FillingStationApp extends Application {
     public Stage stage;
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(FillingStationApp.class.getResource("SelectUser.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(FillingStationApp.class.getResource("LoginWindow.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Tanoso Shell Filling Station");
         stage.setScene(scene);
