@@ -58,12 +58,12 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField promptText="Name" GridPane.columnIndex="1">
+                  <TextField fx:id="TFCustomerName" promptText="Name" GridPane.columnIndex="1">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                  <TextField promptText="Vehicle number" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="TFVehicleNumber" promptText="Vehicle number" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -73,7 +73,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField promptText="Telephone number" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="TFTelNumber" promptText="Telephone number" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -117,9 +117,9 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Petrol" textAlignment="CENTER" />
-                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Engine Oil" textAlignment="CENTER" GridPane.columnIndex="2" />
-                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Super Petrol" textAlignment="CENTER" GridPane.columnIndex="1" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#PetrolProdButtonOnAction" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Petrol" textAlignment="CENTER" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#PetrolEngineOilProdButtonOnAction" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Engine Oil" textAlignment="CENTER" GridPane.columnIndex="2" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#SuperPetrolProdButtonOnAction" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Super Petrol" textAlignment="CENTER" GridPane.columnIndex="1" />
                </children>
             </GridPane>
             <Label layoutX="227.0" layoutY="31.0" text="Select a product:">
@@ -128,7 +128,7 @@
                </font>
             </Label>
             <Button alignment="CENTER" layoutX="909.0" layoutY="294.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Continue" textAlignment="CENTER" />
-            <Button alignment="CENTER" layoutX="1062.0" layoutY="294.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Cancel" textAlignment="CENTER" />
+            <Button alignment="CENTER" layoutX="1062.0" layoutY="294.0" mnemonicParsing="false" onAction="#CancelButtonOnAction" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Cancel" textAlignment="CENTER" />
             <GridPane fx:id="DieselGridPane" layoutX="69.0" layoutY="73.0" prefHeight="146.0" prefWidth="553.0" visible="false">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -140,8 +140,8 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Diesel" textAlignment="CENTER" />
-                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Engine Oil" textAlignment="CENTER" GridPane.columnIndex="1" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#DieselProdButtonOnAction" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Diesel" textAlignment="CENTER" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#DieselEngineOilProdButtonOnAction" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Engine Oil" textAlignment="CENTER" GridPane.columnIndex="1" />
                </children>
             </GridPane>
             <GridPane fx:id="FluidGridPane" layoutX="69.0" layoutY="73.0" prefHeight="146.0" prefWidth="553.0" visible="false">
@@ -155,10 +155,10 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="ATF" textAlignment="CENTER" />
-                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Fuel Injector" textAlignment="CENTER" GridPane.columnIndex="2" />
-                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Brake Fluid" textAlignment="CENTER" GridPane.columnIndex="1" />
-                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Motor Flush" textAlignment="CENTER" GridPane.rowIndex="1" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#ATFProdButtonOnAction" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="ATF" textAlignment="CENTER" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#FuelInjectorProdButtonOnAction" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Fuel Injector" textAlignment="CENTER" GridPane.columnIndex="2" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#BrakeFluidProdButtonOnAction" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Brake Fluid" textAlignment="CENTER" GridPane.columnIndex="1" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#MotorFlushProdButtonOnAction" prefHeight="33.0" prefWidth="115.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Motor Flush" textAlignment="CENTER" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>
@@ -190,17 +190,17 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label text="Price Paid:" GridPane.rowIndex="4">
+                  <Label text="Cost Price:" GridPane.rowIndex="4">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField promptText="Litres" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <TextField fx:id="TFLitresBought" onAction="#LitresBoughtOnInputTextChanges" promptText="Litres" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                  <TextField promptText="Price" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <TextField fx:id="TFCostPrice" promptText="Price" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -220,17 +220,17 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="LBTypeUpdate" text="N/A" GridPane.columnIndex="1">
+                  <Label fx:id="LBTypeUpdate" text="Gasoline" GridPane.columnIndex="1">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="LBProductUpdate" text="N/A" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label fx:id="LBProductUpdate" text="Petrol" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="LBPricePerLitreUpdate" text="¢N/A" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label fx:id="LBPricePerLitreUpdate" text="GH¢5.195" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="16.0" />
                      </font>
