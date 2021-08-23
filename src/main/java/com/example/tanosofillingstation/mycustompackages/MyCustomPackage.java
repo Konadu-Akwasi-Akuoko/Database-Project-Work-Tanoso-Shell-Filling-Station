@@ -23,11 +23,7 @@ public class MyCustomPackage {
         //After showing the new scene, the previous stage/window needs to be closed, through one of its buttons.
         //The code below is syntactically correct, but it gives a null pointer exception, that is why we are using try and catch.
         Stage stageToClose = (Stage) ButtonOfStageToClose.getScene().getWindow();
-        try {
-            stageToClose.close();
-        } catch (NullPointerException exception) {
-            System.out.println("Null pointer exception thrown.");
-        }
+        stageToClose.close();
     }
 
     public static void CloseStage(Button ButtonOfStageToClose) {

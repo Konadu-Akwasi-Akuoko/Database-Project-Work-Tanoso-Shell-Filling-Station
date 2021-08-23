@@ -29,9 +29,9 @@ public class LoginWindowController {
         //Check password and username if it falls in user, send user to user page, otherwise send admin to admin page.
         if (Objects.equals(TFUserName.getText(), "") || Objects.equals(PSPassword.getText(), "")) {
             LBInvalidLogIn.setVisible(true);
+        } else {
+            MyCustomPackage.ChangeScene("EmployeeWindow.fxml", "Shell Filling Station - Employee", BTLogIn);
         }
-        else
-            MyCustomPackage.ChangeScene("EmployeeWindow.fxml","Shell Filling Station - Employee", BTLogIn);
     }
 
     @FXML

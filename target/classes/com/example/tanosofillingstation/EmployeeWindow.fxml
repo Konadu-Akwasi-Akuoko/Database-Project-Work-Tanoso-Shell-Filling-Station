@@ -10,13 +10,14 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1220.0" style="-fx-background-color: #e3dfd3;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tanosofillingstation.EmployeeWindowController">
+<BorderPane fx:id="BPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#BorderBoxOnMouseEntered" prefHeight="820.0" prefWidth="1220.0" style="-fx-background-color: #e3dfd3;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tanosofillingstation.EmployeeWindowController">
    <top>
       <AnchorPane prefHeight="64.0" prefWidth="1220.0" style="-fx-background-color: #e3d991;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="122.0" layoutY="15.0" prefWidth="107.0" text="1st July 2021">
+            <Label fx:id="LBDate" layoutX="122.0" layoutY="15.0" prefHeight="16.0" prefWidth="247.0" text="1st July 2021">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -26,7 +27,7 @@
                   <Image url="@../../../Images/1200px-Shell_logo.svg.png" />
                </image>
             </ImageView>
-            <Label layoutX="122.0" layoutY="33.0" prefWidth="107.0" text="12:30pm">
+            <Label fx:id="LBTime" layoutX="122.0" layoutY="33.0" prefWidth="107.0" text="12:30pm">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -127,8 +128,8 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Button alignment="CENTER" layoutX="909.0" layoutY="294.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Continue" textAlignment="CENTER" />
-            <Button alignment="CENTER" layoutX="1062.0" layoutY="294.0" mnemonicParsing="false" onAction="#CancelButtonOnAction" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Cancel" textAlignment="CENTER" />
+            <Button fx:id="BTContinue" alignment="CENTER" layoutX="909.0" layoutY="294.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Continue" textAlignment="CENTER" visible="false" />
+            <Button fx:id="BTCancel" alignment="CENTER" layoutX="1062.0" layoutY="294.0" mnemonicParsing="false" onAction="#CancelButtonOnAction" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Cancel" textAlignment="CENTER" visible="false" />
             <GridPane fx:id="DieselGridPane" layoutX="69.0" layoutY="73.0" prefHeight="146.0" prefWidth="553.0" visible="false">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -167,11 +168,6 @@
    <right>
       <AnchorPane prefHeight="606.0" prefWidth="610.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="548.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../Images/Arh-avatar.jpg" />
-               </image>
-            </ImageView>
             <GridPane layoutX="111.0" layoutY="128.0" prefHeight="465.0" prefWidth="403.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="235.0" minWidth="10.0" prefWidth="125.0" />
@@ -195,12 +191,12 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="TFLitresBought" onAction="#LitresBoughtOnInputTextChanges" promptText="Litres" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <TextField fx:id="TFLitresBought" onMouseClicked="#TFLitresBoughtOnMouseClicked" promptText="Litres" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="TFCostPrice" promptText="Price" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <TextField fx:id="TFCostPrice" onMouseClicked="#TFCostPriceOnTextChanged" promptText="Price" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -237,9 +233,10 @@
                   </Label>
                </children>
             </GridPane>
-            <Label layoutX="313.0" layoutY="48.0" text="Akuoko Konadu Akwasi">
+            <Circle fill="#e3dfd3" layoutX="557.0" layoutY="56.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="533.0" layoutY="32.0" prefHeight="48.0" prefWidth="49.0" text="AK" textAlignment="CENTER">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
          </children>
