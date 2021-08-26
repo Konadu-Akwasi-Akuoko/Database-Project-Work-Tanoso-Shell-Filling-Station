@@ -5,9 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import com.example.tanosofillingstation.mycustompackages.MyCustomPackage;
-
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class FillingStationApp extends Application {
     public Stage stage;
@@ -20,7 +19,8 @@ public class FillingStationApp extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         launch();
     }
+
 }
