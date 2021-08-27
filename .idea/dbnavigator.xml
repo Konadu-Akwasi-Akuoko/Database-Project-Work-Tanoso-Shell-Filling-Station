@@ -25,39 +25,35 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="2487c4b6-6f01-4d38-8902-291a4bc82022">
-        <schema name="AAMUSTEDPOS" object-types="table, view" />
+      <connection connection-id="0459cdba-7b03-4e01-866e-5f6e0097491d">
         <schema name="Tanoso_Filling_Station" object-types="table, view, procedure, function, constraint, index, column, dataset trigger" />
-        <schema name="vintageShop" object-types="table, view" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="2487c4b6-6f01-4d38-8902-291a4bc82022">
-      <console name="Connection" type="STANDARD" schema="mysql" session="Main" />
+    <connection id="0459cdba-7b03-4e01-866e-5f6e0097491d">
+      <console name="DBTFS" type="STANDARD" schema="mysql" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
-      <object connection-id="2487c4b6-6f01-4d38-8902-291a4bc82022" object-ref="schemas/Tanoso_Filling_Station/tables/CUSTOMER" />
-      <object connection-id="2487c4b6-6f01-4d38-8902-291a4bc82022" object-ref="schemas/Tanoso_Filling_Station/tables/EMPLOYEE" />
-      <object connection-id="2487c4b6-6f01-4d38-8902-291a4bc82022" object-ref="schemas/Tanoso_Filling_Station/tables/OIL_PRODUCT" />
-      <object connection-id="2487c4b6-6f01-4d38-8902-291a4bc82022" object-ref="schemas/Tanoso_Filling_Station/tables/PURCHASE" />
+      <object connection-id="0459cdba-7b03-4e01-866e-5f6e0097491d" object-ref="schemas/Tanoso_Filling_Station/tables/EMPLOYEE" />
+      <object connection-id="0459cdba-7b03-4e01-866e-5f6e0097491d" object-ref="schemas/Tanoso_Filling_Station/tables/CUSTOMER" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="2487c4b6-6f01-4d38-8902-291a4bc82022" />
+    <connection id="0459cdba-7b03-4e01-866e-5f6e0097491d" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="2487c4b6-6f01-4d38-8902-291a4bc82022" dataset="Tanoso_Filling_Station.PURCHASE" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="2487c4b6-6f01-4d38-8902-291a4bc82022" dataset="vintageShop.PRODUCT" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="2487c4b6-6f01-4d38-8902-291a4bc82022" dataset="Tanoso_Filling_Station.OIL_PRODUCT" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="2487c4b6-6f01-4d38-8902-291a4bc82022" dataset="Tanoso_Filling_Station.EMPLOYEE" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="2487c4b6-6f01-4d38-8902-291a4bc82022" dataset="Tanoso_Filling_Station.CUSTOMER" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="2487c4b6-6f01-4d38-8902-291a4bc82022" dataset="AAMUSTEDPOS.CUSTOMER" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="0459cdba-7b03-4e01-866e-5f6e0097491d" dataset="Tanoso_Filling_Station.PURCHASE" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="0459cdba-7b03-4e01-866e-5f6e0097491d" dataset="Tanoso_Filling_Station.OIL_PRODUCT" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="0459cdba-7b03-4e01-866e-5f6e0097491d" dataset="Tanoso_Filling_Station.EMPLOYEE" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="0459cdba-7b03-4e01-866e-5f6e0097491d" dataset="Tanoso_Filling_Station.CUSTOMER" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
-    <last-used-providers />
+    <last-used-providers>
+      <object-type object-type="TABLE" editor-provider="DATA" />
+    </last-used-providers>
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
@@ -82,9 +78,9 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="2487c4b6-6f01-4d38-8902-291a4bc82022" active="true">
+      <connection id="0459cdba-7b03-4e01-866e-5f6e0097491d" active="true">
         <database>
-          <name value="Connection" />
+          <name value="DBTFS" />
           <description value="" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
@@ -124,7 +120,7 @@
           <session-management value="true" />
           <ddl-file-binding value="true" />
           <database-logging value="false" />
-          <connect-automatically value="true" />
+          <connect-automatically value="false" />
           <restore-workspace value="true" />
           <restore-workspace-deep value="true" />
           <environment-type value="default" />

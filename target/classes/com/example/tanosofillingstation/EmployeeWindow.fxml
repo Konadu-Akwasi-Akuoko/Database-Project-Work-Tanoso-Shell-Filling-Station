@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
+
 <BorderPane fx:id="BPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#BorderBoxOnMouseEntered" prefHeight="820.0" prefWidth="1220.0" style="-fx-background-color: #e3dfd3;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tanosofillingstation.EmployeeWindowController">
    <top>
       <AnchorPane prefHeight="64.0" prefWidth="1220.0" style="-fx-background-color: #e3d991;" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="LBDate" layoutX="122.0" layoutY="15.0" prefHeight="16.0" prefWidth="247.0" text="1st July 2021">
+            <Label fx:id="LBDate" layoutX="122.0" layoutY="15.0" prefHeight="16.0" prefWidth="247.0" text="1st January 0000">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -20,7 +27,7 @@
                   <Image url="@../../../Images/1200px-Shell_logo.svg.png" />
                </image>
             </ImageView>
-            <Label fx:id="LBTime" layoutX="122.0" layoutY="33.0" prefWidth="107.0" text="12:30pm">
+            <Label fx:id="LBTime" layoutX="122.0" layoutY="33.0" prefWidth="107.0" text="00:00:00 AA">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -121,8 +128,8 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Button fx:id="BTContinue" alignment="CENTER" layoutX="909.0" layoutY="294.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Continue" textAlignment="CENTER" visible="false" />
-            <Button fx:id="BTCancel" alignment="CENTER" layoutX="1062.0" layoutY="294.0" mnemonicParsing="false" onAction="#CancelButtonOnAction" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Cancel" textAlignment="CENTER" visible="false" />
+            <Button fx:id="BTContinue" alignment="CENTER" layoutX="1063.0" layoutY="293.0" mnemonicParsing="false" onAction="#ContinueButtonOnAction" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Continue" textAlignment="CENTER" visible="false" />
+            <Button fx:id="BTCancel" alignment="CENTER" layoutX="921.0" layoutY="293.0" mnemonicParsing="false" onAction="#CancelButtonOnAction" prefHeight="33.0" prefWidth="94.0" style="-fx-background-color: #e3d991; -fx-text-fill: #000000;" text="Cancel" textAlignment="CENTER" visible="false" />
             <GridPane fx:id="DieselGridPane" layoutX="69.0" layoutY="73.0" prefHeight="146.0" prefWidth="553.0" visible="false">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -227,12 +234,12 @@
                </children>
             </GridPane>
             <Circle fill="#e3dfd3" layoutX="557.0" layoutY="56.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="533.0" layoutY="32.0" prefHeight="48.0" prefWidth="49.0" text="AK" textAlignment="CENTER">
+            <Label fx:id="UserLabelId" alignment="CENTER" contentDisplay="CENTER" layoutX="533.0" layoutY="32.0" prefHeight="48.0" prefWidth="49.0" text="AK" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Button layoutX="533.0" layoutY="33.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="49.0" text="USR" />
+            <Button layoutX="533.0" layoutY="33.0" mnemonicParsing="false" onAction="#USRButtonOnAction" prefHeight="47.0" prefWidth="49.0" text="USR" visible="false" />
          </children>
       </AnchorPane>
    </right>

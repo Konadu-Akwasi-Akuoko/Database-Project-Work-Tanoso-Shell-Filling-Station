@@ -1,5 +1,8 @@
 package com.example.tanosofillingstation;
 
+import com.example.tanosofillingstation.mycustompackages.DBQueries;
+import com.example.tanosofillingstation.mycustompackages.SharedData;
+import com.example.tanosofillingstation.mycustompackages.WindowManipulators;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,6 +15,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
@@ -57,6 +61,13 @@ public class EmployeeWindowController {
     private TextField TFTelNumber;
     @FXML
     private BorderPane BPane;
+    @FXML
+    private Label UserLabelId;
+
+    private int oil_ProductID;
+
+    double price;
+    double litresBought;
 
     private enum CurrentButton {
         Petrol,
@@ -115,13 +126,15 @@ public class EmployeeWindowController {
         LBTypeUpdate.setText("Gasoline");
         LBProductUpdate.setText("Petrol");
         LBPricePerLitreUpdate.setText("GH¢5.195");
+        oil_ProductID = 1;
     }
 
     @FXML
     private void SuperPetrolProdButtonOnAction() {
         LBTypeUpdate.setText("Gasoline");
-        LBProductUpdate.setText("Super Petrol");
+        LBProductUpdate.setText("Super P");
         LBPricePerLitreUpdate.setText("GH¢5.265");
+        oil_ProductID = 2;
     }
 
     @FXML
@@ -129,6 +142,7 @@ public class EmployeeWindowController {
         LBTypeUpdate.setText("Gasoline");
         LBProductUpdate.setText("Engine Oil");
         LBPricePerLitreUpdate.setText("GH¢22.5");
+        oil_ProductID =3;
     }
 
     @FXML
@@ -136,6 +150,7 @@ public class EmployeeWindowController {
         LBTypeUpdate.setText("Diesel");
         LBProductUpdate.setText("Diesel");
         LBPricePerLitreUpdate.setText("GH¢5.095");
+        oil_ProductID = 4;
     }
 
     @FXML
@@ -143,34 +158,39 @@ public class EmployeeWindowController {
         LBTypeUpdate.setText("Diesel");
         LBProductUpdate.setText("Engine Oil");
         LBPricePerLitreUpdate.setText("GH¢22.5");
+        oil_ProductID = 5;
     }
 
     @FXML
     private void ATFProdButtonOnAction() {
         LBTypeUpdate.setText("Fluids");
-        LBProductUpdate.setText("Automatic Transmission Fluid D3");
+        LBProductUpdate.setText("ATF");
         LBPricePerLitreUpdate.setText("GH¢35");
+        oil_ProductID = 6;
     }
 
     @FXML
     private void MotorFlushProdButtonOnAction() {
         LBTypeUpdate.setText("Fluids");
-        LBProductUpdate.setText("Motor Flush");
+        LBProductUpdate.setText("Motor F");
         LBPricePerLitreUpdate.setText("GH¢13");
+        oil_ProductID = 9;
     }
 
     @FXML
     private void BrakeFluidProdButtonOnAction() {
         LBTypeUpdate.setText("Fluids");
-        LBProductUpdate.setText("Brake Fluid Dot 3");
+        LBProductUpdate.setText("Brake F");
         LBPricePerLitreUpdate.setText("GH¢23");
+        oil_ProductID = 7;
     }
 
     @FXML
     private void FuelInjectorProdButtonOnAction() {
         LBTypeUpdate.setText("Fluids");
-        LBProductUpdate.setText("Fuel Injector");
+        LBProductUpdate.setText("Fuel I");
         LBPricePerLitreUpdate.setText("GH¢15");
+        oil_ProductID = 8;
     }
 
     @FXML
@@ -181,34 +201,46 @@ public class EmployeeWindowController {
         TFLitresBought.textProperty().addListener(((observableValue, oldValue, newValue) -> {
             //Check if the Fuel type and product have a certain name, if so do the calculation
             // and change the text in the cost price text box.
-            double price = 0;
-            if (Objects.equals(LBTypeUpdate.getText(), "Gasoline") && Objects.equals(LBProductUpdate.getText(), "Petrol")) {
-                price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 5.195) * 100.0) / 100.0;
-                TFCostPrice.setText("GH¢" + price);
-            } else if (Objects.equals(LBTypeUpdate.getText(), "Gasoline") && Objects.equals(LBProductUpdate.getText(), "Super Petrol")) {
-                price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 5.265) * 100.0) / 100.0;
-                TFCostPrice.setText("GH¢" + price);
-            } else if (Objects.equals(LBTypeUpdate.getText(), "Gasoline") && Objects.equals(LBProductUpdate.getText(), "Engine Oil")) {
-                price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 22.5) * 100.0) / 100.0;
-                TFCostPrice.setText("GH¢" + price);
-            } else if (Objects.equals(LBTypeUpdate.getText(), "Diesel") && Objects.equals(LBProductUpdate.getText(), "Diesel")) {
-                price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 5.095) * 100.0) / 100.0;
-                TFCostPrice.setText("GH¢" + price);
-            } else if (Objects.equals(LBTypeUpdate.getText(), "Diesel") && Objects.equals(LBProductUpdate.getText(), "Engine Oil")) {
-                price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 22.5) * 100.0) / 100.0;
-                TFCostPrice.setText("GH¢" + price);
-            } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Automatic Transmission Fluid D3")) {
-                price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 35) * 100.0) / 100.0;
-                TFCostPrice.setText("GH¢" + price);
-            } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Brake Fluid Dot 3")) {
-                price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 23) * 100.0) / 100.0;
-                TFCostPrice.setText("GH¢" + price);
-            } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Fuel Injector")) {
-                price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 15) * 100.0) / 100.0;
-                TFCostPrice.setText("GH¢" + price);
-            } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Motor Flush")) {
-                price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 13) * 100.0) / 100.0;
-                TFCostPrice.setText("GH¢" + price);
+            try {
+                if (Objects.equals(LBTypeUpdate.getText(), "Gasoline") && Objects.equals(LBProductUpdate.getText(), "Petrol")) {
+                    price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 5.195) * 100.0) / 100.0;
+                    litresBought = Double.parseDouble(TFLitresBought.getText());
+                    TFCostPrice.setText("GH¢" + price);
+                } else if (Objects.equals(LBTypeUpdate.getText(), "Gasoline") && Objects.equals(LBProductUpdate.getText(), "Super Petrol")) {
+                    price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 5.265) * 100.0) / 100.0;
+                    litresBought = Double.parseDouble(TFLitresBought.getText());
+                    TFCostPrice.setText("GH¢" + price);
+                } else if (Objects.equals(LBTypeUpdate.getText(), "Gasoline") && Objects.equals(LBProductUpdate.getText(), "Engine Oil")) {
+                    price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 22.5) * 100.0) / 100.0;
+                    litresBought = Double.parseDouble(TFLitresBought.getText());
+                    TFCostPrice.setText("GH¢" + price);
+                } else if (Objects.equals(LBTypeUpdate.getText(), "Diesel") && Objects.equals(LBProductUpdate.getText(), "Diesel")) {
+                    price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 5.095) * 100.0) / 100.0;
+                    litresBought = Double.parseDouble(TFLitresBought.getText());
+                    TFCostPrice.setText("GH¢" + price);
+                } else if (Objects.equals(LBTypeUpdate.getText(), "Diesel") && Objects.equals(LBProductUpdate.getText(), "Engine Oil")) {
+                    price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 22.5) * 100.0) / 100.0;
+                    litresBought = Double.parseDouble(TFLitresBought.getText());
+                    TFCostPrice.setText("GH¢" + price);
+                } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Automatic Transmission Fluid D3")) {
+                    price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 35) * 100.0) / 100.0;
+                    litresBought = Double.parseDouble(TFLitresBought.getText());
+                    TFCostPrice.setText("GH¢" + price);
+                } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Brake Fluid Dot 3")) {
+                    price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 23) * 100.0) / 100.0;
+                    litresBought = Double.parseDouble(TFLitresBought.getText());
+                    TFCostPrice.setText("GH¢" + price);
+                } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Fuel Injector")) {
+                    price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 15) * 100.0) / 100.0;
+                    litresBought = Double.parseDouble(TFLitresBought.getText());
+                    TFCostPrice.setText("GH¢" + price);
+                } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Motor Flush")) {
+                    price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 13) * 100.0) / 100.0;
+                    litresBought = Double.parseDouble(TFLitresBought.getText());
+                    TFCostPrice.setText("GH¢" + price);
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Number format exception, thus " + e + " " + e.getMessage());
             }
         }));
 
@@ -222,34 +254,46 @@ public class EmployeeWindowController {
         TFCostPrice.textProperty().addListener(((observableValue, oldValue, newValue) -> {
             //Check if the Fuel type and product is of a certain name.
             // if so change the text in the cost price text box.
-            double litresBought = 0;
-            if (Objects.equals(LBTypeUpdate.getText(), "Gasoline") && Objects.equals(LBProductUpdate.getText(), "Petrol")) {
-                litresBought = Math.round(Double.parseDouble(TFCostPrice.getText()) / 5.195) * 1000.0 / 1000.0;
-                TFLitresBought.setText(litresBought + "litres");
-            } else if (Objects.equals(LBTypeUpdate.getText(), "Gasoline") && Objects.equals(LBProductUpdate.getText(), "Super Petrol")) {
-                litresBought = Math.round(Double.parseDouble(TFCostPrice.getText()) / 5.265) * 1000.0 / 1000.0;
-                TFLitresBought.setText(litresBought + "litres");
-            } else if (Objects.equals(LBTypeUpdate.getText(), "Gasoline") && Objects.equals(LBProductUpdate.getText(), "Engine Oil")) {
-                litresBought = Math.round(Double.parseDouble(TFCostPrice.getText()) / 22.5) * 1000.0 / 1000.0;
-                TFLitresBought.setText(litresBought + "litres");
-            } else if (Objects.equals(LBTypeUpdate.getText(), "Diesel") && Objects.equals(LBProductUpdate.getText(), "Diesel")) {
-                litresBought = Math.round(Double.parseDouble(TFCostPrice.getText()) / 5.095) * 1000.0 / 1000.0;
-                TFLitresBought.setText(litresBought + "litres");
-            } else if (Objects.equals(LBTypeUpdate.getText(), "Diesel") && Objects.equals(LBProductUpdate.getText(), "Engine Oil")) {
-                litresBought = Math.round(Double.parseDouble(TFCostPrice.getText()) / 22.5) * 1000.0 / 1000.0;
-                TFLitresBought.setText(litresBought + "litres");
-            } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Automatic Transmission Fluid D3")) {
-                litresBought = Math.round(Double.parseDouble(TFCostPrice.getText()) / 35) * 1000.0 / 1000.0;
-                TFLitresBought.setText(litresBought + "litres");
-            } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Brake Fluid Dot 3")) {
-                litresBought = Math.round(Double.parseDouble(TFCostPrice.getText()) / 23) * 1000.0 / 1000.0;
-                TFLitresBought.setText(litresBought + "litres");
-            } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Fuel Injector")) {
-                litresBought = Math.round(Double.parseDouble(TFCostPrice.getText()) / 15) * 1000.0 / 1000.0;
-                TFLitresBought.setText(litresBought + "litres");
-            } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Motor Flush")) {
-                litresBought = Math.round(Double.parseDouble(TFCostPrice.getText()) / 13) * 1000.0 / 1000.0;
-                TFLitresBought.setText(litresBought + "litres");
+            try {
+                if (Objects.equals(LBTypeUpdate.getText(), "Gasoline") && Objects.equals(LBProductUpdate.getText(), "Petrol")) {
+                    litresBought = Math.round(Double.parseDouble(TFCostPrice.getText()) / 5.195) * 1000.0 / 1000.0;
+                    price = Double.parseDouble(TFCostPrice.getText());
+                    TFLitresBought.setText(litresBought + "litres");
+                } else if (Objects.equals(LBTypeUpdate.getText(), "Gasoline") && Objects.equals(LBProductUpdate.getText(), "Super Petrol")) {
+                    litresBought = Math.round(Double.parseDouble(TFCostPrice.getText()) / 5.265) * 1000.0 / 1000.0;
+                    price = Double.parseDouble(TFCostPrice.getText());
+                    TFLitresBought.setText(litresBought + "litres");
+                } else if (Objects.equals(LBTypeUpdate.getText(), "Gasoline") && Objects.equals(LBProductUpdate.getText(), "Engine Oil")) {
+                    litresBought = Math.round(Double.parseDouble(TFCostPrice.getText()) / 22.5) * 1000.0 / 1000.0;
+                    price = Double.parseDouble(TFCostPrice.getText());
+                    TFLitresBought.setText(litresBought + "litres");
+                } else if (Objects.equals(LBTypeUpdate.getText(), "Diesel") && Objects.equals(LBProductUpdate.getText(), "Diesel")) {
+                    litresBought = Math.round(Double.parseDouble(TFCostPrice.getText()) / 5.095) * 1000.0 / 1000.0;
+                    price = Double.parseDouble(TFCostPrice.getText());
+                    TFLitresBought.setText(litresBought + "litres");
+                } else if (Objects.equals(LBTypeUpdate.getText(), "Diesel") && Objects.equals(LBProductUpdate.getText(), "Engine Oil")) {
+                    litresBought = Math.round(Double.parseDouble(TFCostPrice.getText()) / 22.5) * 1000.0 / 1000.0;
+                    price = Double.parseDouble(TFCostPrice.getText());
+                    TFLitresBought.setText(litresBought + "litres");
+                } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Automatic Transmission Fluid D3")) {
+                    litresBought = Math.round(Double.parseDouble(TFCostPrice.getText()) / 35) * 1000.0 / 1000.0;
+                    price = Double.parseDouble(TFCostPrice.getText());
+                    TFLitresBought.setText(litresBought + "litres");
+                } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Brake Fluid Dot 3")) {
+                    litresBought = Math.round(Double.parseDouble(TFCostPrice.getText()) / 23) * 1000.0 / 1000.0;
+                    price = Double.parseDouble(TFCostPrice.getText());
+                    TFLitresBought.setText(litresBought + "litres");
+                } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Fuel Injector")) {
+                    litresBought = Math.round(Double.parseDouble(TFCostPrice.getText()) / 15) * 1000.0 / 1000.0;
+                    price = Double.parseDouble(TFCostPrice.getText());
+                    TFLitresBought.setText(litresBought + "litres");
+                } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Motor Flush")) {
+                    litresBought = Math.round(Double.parseDouble(TFCostPrice.getText()) / 13) * 1000.0 / 1000.0;
+                    price = Double.parseDouble(TFCostPrice.getText());
+                    TFLitresBought.setText(litresBought + "litres");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Number format exception, thus " + e + " " + e.getMessage());
             }
         }));
 
@@ -259,8 +303,9 @@ public class EmployeeWindowController {
     }
 
     @FXML
-    private void CancelButtonOnAction(ActionEvent event) {
+    private void CancelButtonOnAction() {
         //When the cancel button is pressed all text fields needs to be cleared.
+        System.out.println(litresBought + " " + price);
         TFCustomerName.setText("");
         TFCustomerName.setPromptText("Name");
         TFVehicleNumber.setText("");
@@ -279,13 +324,27 @@ public class EmployeeWindowController {
         TFCustomerName.requestFocus();
     }
 
+    @FXML
+    private void ContinueButtonOnAction() throws IOException {
+        WindowManipulators.AddAnotherScene("ConfirmPurchase.fxml", "Confirm Purchase");
+        //Data from this window needs to be shared, so we call shareData to share that data.
+        SharedData.OutgoingEmployeeSharedData(TFCustomerName.getText(),TFVehicleNumber.getText(),TFTelNumber.getText(), LBTypeUpdate.getText(),
+                LBProductUpdate.getText(), String.valueOf(litresBought), String.valueOf(price), oil_ProductID);
+    }
+
     //This function takes care of the time and date.
     @FXML
     private void BorderBoxOnMouseEntered() {
         //This function is called once, only at the start when the scene is changed.
-        if(timeInitiated){
+        if (timeInitiated) {
             TimeAndDateUpdate();
+
         }
+    }
+
+    @FXML
+    private void USRButtonOnAction(){
+
     }
 
     //This function updates and controls the time and date on the Employee Window.
@@ -303,17 +362,16 @@ public class EmployeeWindowController {
             public void run() {
                 //Platform.runLater is used because apparently Timer does not work on javaFx threads, so the
                 // function is used, so that Timer which is a java thread can be added to the javafx thread.
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        Date date2 = new Date();
-                        SimpleDateFormat simpleTimeFormat = new SimpleDateFormat("hh:mm:ss");
-                        LBTime.setText(simpleTimeFormat.format(date2));
-                    }
+                Platform.runLater(() -> {
+                    Date date2 = new Date();
+                    SimpleDateFormat simpleTimeFormat = new SimpleDateFormat("hh:mm:ss aa");
+                    LBTime.setText(simpleTimeFormat.format(date2));
                 });
             }
         }, 1000, 1000);
 
+        //The user label needs to be updated with the username.
+        UserLabelId.setText(DBQueries.emp_Ini);
         //The timer needs to be stopped when the stage is coming to close.
         // Because the Timer is a java thread and not a javafx thread, it needs to be stooped, otherwise when the scene is closed
         // using the close button, the timer thread will continue running.

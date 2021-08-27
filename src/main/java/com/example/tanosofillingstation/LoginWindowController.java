@@ -1,6 +1,7 @@
 package com.example.tanosofillingstation;
 
-import com.example.tanosofillingstation.mycustompackages.CustomFunctionsAndSql;
+import com.example.tanosofillingstation.mycustompackages.DBQueries;
+import com.example.tanosofillingstation.mycustompackages.WindowManipulators;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,7 +10,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class LoginWindowController {
     @FXML
@@ -24,14 +24,21 @@ public class LoginWindowController {
     private Button BTLogIn;
 
     //package containing sql statements.
-    CustomFunctionsAndSql customFunctionsAndSql = new CustomFunctionsAndSql();
+    DBQueries dbQueries = new DBQueries();
 
     @FXML
     private void LogInButtonAction(ActionEvent event) throws IOException {
         //If the credentials are false display "Invalid Login"
         //Check password and username if it falls in user, send user to user page, otherwise send admin to admin page.
-        if (customFunctionsAndSql.CheckUserNameAndPassword(TFUserName.getText(), Integer.parseInt(PSPassword.getText()))) {
-            CustomFunctionsAndSql.ChangeScene("EmployeeWindow.fxml", "Tanoso Filling Station - Employee", BTLogIn);
+        boolean[] authenticate_authorize;
+        authenticate_authorize = dbQueries.AuthenticationAndAuthorization(TFUserName.getText(), Integer.parseInt(PSPassword.getText()));
+        if (authenticate_authorize[0]) {
+            //If authentication is true, then authorize the user. True means the user is an admin, otherwise the user is an employee.
+            if (authenticate_authorize[1]) {
+                WindowManipulators.ChangeScene("EmployeeWindow.fxml", "Tanoso Filling Station - Employee", BTLogIn);
+            } else {
+                WindowManipulators.ChangeScene("EmployeeWindow.fxml", "Tanoso Filling Station - Employee", BTLogIn);
+            }
         } else {
             LBInvalidLogIn.setVisible(true);
         }
@@ -41,10 +48,6 @@ public class LoginWindowController {
     @FXML
     //Go back to the last scene, thus the SelectUser scene.
     private void CancelButtonAction(ActionEvent event) throws IOException {
-        CustomFunctionsAndSql.CloseStage(BTCancelButton);
-    }
-
-    private void CheckUserNameAndPassword() {
-
+        WindowManipulators.CloseStage(BTCancelButton);
     }
 }

@@ -24,6 +24,7 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>11.0.2</version>
+            <type>jar</type>
         </dependency>
 
         <dependency>
@@ -44,7 +45,12 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>11.0.2</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 
     <build>
