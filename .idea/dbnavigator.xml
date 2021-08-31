@@ -36,10 +36,7 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="0459cdba-7b03-4e01-866e-5f6e0097491d" object-ref="schemas/Tanoso_Filling_Station/tables/EMPLOYEE" />
-      <object connection-id="0459cdba-7b03-4e01-866e-5f6e0097491d" object-ref="schemas/Tanoso_Filling_Station/tables/CUSTOMER" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="0459cdba-7b03-4e01-866e-5f6e0097491d" />

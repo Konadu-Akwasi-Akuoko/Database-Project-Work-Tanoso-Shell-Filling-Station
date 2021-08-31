@@ -1,16 +1,14 @@
 package com.example.tanosofillingstation.mycustompackages;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.Objects;
 
 public class DBQueries {
     //SQL STATEMENTS AND QUERIES.
-    Connection connection = null;
-    PreparedStatement preparedSQLStatement;
-    ResultSet resultSet;
+    static Connection connection = null;
+    static PreparedStatement preparedSQLStatement;
+    static ResultSet resultSet;
+    static int resultSetInt;
     boolean[] Authenticate_Authorize = new boolean[2];
 
     //Employee initials must be used on the Employee window, therefore we need to store it as a static variable.
@@ -35,12 +33,26 @@ public class DBQueries {
         return conn;
     }
 
+    //Close all DB connections.
+    private void DBCloseConnections() {
+        try {
+            System.out.println("Closing connections.");
+            resultSet.close();
+            preparedSQLStatement.close();
+            connection.close();
+        } catch (Exception e) {
+            System.out.println("Connections didn't close due to:  " + e + "\n" + e.getMessage());
+        }
+    }
+
+
     public boolean[] AuthenticationAndAuthorization(String username, int password) {
         //Connect to a database and execute the query.
         try {
             //Connecting to a database using a connection.
             connection = ConnectDB(connection);
-            preparedSQLStatement = connection.prepareStatement("SELECT emp_id, emp_Status, emp_Name, emp_Initials FROM EMPLOYEE WHERE emp_id = ? AND emp_Name = ?");
+            preparedSQLStatement = connection.prepareStatement("SELECT emp_id, emp_Status, emp_Name, emp_Initials " +
+                    "FROM EMPLOYEE WHERE emp_id = ? AND emp_UserName = ?");
             preparedSQLStatement.setInt(1, password);
             preparedSQLStatement.setString(2, username);
             resultSet = preparedSQLStatement.executeQuery();
@@ -70,20 +82,37 @@ public class DBQueries {
             System.out.println("Querying not successful.");
             System.out.println("The exception in the catch block is " + e + "\n" + e.getMessage());
         } finally {
-            try {
-                System.out.println("Closing connections.");
-                resultSet.close();
-                preparedSQLStatement.close();
-                connection.close();
-            } catch (Exception e) {
-                System.out.println("Connections didn't close due to:  " + e + "\n" + e.getMessage());
-            }
+            DBCloseConnections();
         }
         return Authenticate_Authorize;
     }
 
-    public void DBInsertValuesIntoEmployeeTB(){
+    public void DBInsertValuesIntoEmployeeTB(String cus_Name, String cus_vNum, int cus_tNum,
+                                             float cus_pPaid, float cus_lBought, int oilP_id, String emp_Ini) {
         connection = ConnectDB(connection);
-        //preparedSQLStatement = connection.prepareStatement();
+        try {
+            preparedSQLStatement = connection.prepareStatement("INSERT INTO CUSTOMER" +
+                    "(cus_Name,cus_vehicleNum,cus_telephoneNum,cus_pricePaid,cus_litresBought,op_id,emp_Initials)" +
+                    "VALUES (?,?,?,?,?,?,?)");
+            preparedSQLStatement.setString(1, cus_Name);
+            preparedSQLStatement.setString(2, cus_vNum);
+            preparedSQLStatement.setInt(3, cus_tNum);
+            preparedSQLStatement.setFloat(4, cus_pPaid);
+            preparedSQLStatement.setFloat(5, cus_lBought);
+            preparedSQLStatement.setInt(6, oilP_id);
+            preparedSQLStatement.setString(7, emp_Ini);
+            //Result set here must be integer, because it is executing an update.
+            resultSetInt = preparedSQLStatement.executeUpdate();
+            System.out.println(resultSet);
+            System.out.println("Values inserted into DB.");
+        } catch (SQLException e) {
+            System.out.println("SQL exception in Inserting data to Employees table: " + e + e.getMessage());
+        } finally {
+            try {
+                DBCloseConnections();
+            } catch (NumberFormatException e) {
+                System.out.println("Error in sql resultSet.close: " + e.getMessage() + " " + e);
+            }
+        }
     }
 }

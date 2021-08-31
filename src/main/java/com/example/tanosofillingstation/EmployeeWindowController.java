@@ -64,7 +64,7 @@ public class EmployeeWindowController {
     @FXML
     private Label UserLabelId;
 
-    private int oil_ProductID;
+    static private int oil_ProductID;
 
     double price;
     double litresBought;
@@ -78,7 +78,7 @@ public class EmployeeWindowController {
     //The Enum which has been selected.
     CurrentButton currentButton;
     //A boolean to take care of when the time and date is initiated. And it will stay false when the time and date is initiated for the first time.
-    private Boolean timeInitiated = true;
+    private Boolean isTimeInitiated = true;
 
     @FXML
     private void GasolineTypeButtonOnAction(ActionEvent event) {
@@ -127,6 +127,7 @@ public class EmployeeWindowController {
         LBProductUpdate.setText("Petrol");
         LBPricePerLitreUpdate.setText("GH¢5.195");
         oil_ProductID = 1;
+        System.out.println(oil_ProductID);
     }
 
     @FXML
@@ -135,6 +136,7 @@ public class EmployeeWindowController {
         LBProductUpdate.setText("Super P");
         LBPricePerLitreUpdate.setText("GH¢5.265");
         oil_ProductID = 2;
+        System.out.println(oil_ProductID);
     }
 
     @FXML
@@ -142,7 +144,8 @@ public class EmployeeWindowController {
         LBTypeUpdate.setText("Gasoline");
         LBProductUpdate.setText("Engine Oil");
         LBPricePerLitreUpdate.setText("GH¢22.5");
-        oil_ProductID =3;
+        oil_ProductID = 3;
+        System.out.println(oil_ProductID);
     }
 
     @FXML
@@ -151,6 +154,7 @@ public class EmployeeWindowController {
         LBProductUpdate.setText("Diesel");
         LBPricePerLitreUpdate.setText("GH¢5.095");
         oil_ProductID = 4;
+        System.out.println(oil_ProductID);
     }
 
     @FXML
@@ -159,6 +163,7 @@ public class EmployeeWindowController {
         LBProductUpdate.setText("Engine Oil");
         LBPricePerLitreUpdate.setText("GH¢22.5");
         oil_ProductID = 5;
+        System.out.println(oil_ProductID);
     }
 
     @FXML
@@ -167,6 +172,7 @@ public class EmployeeWindowController {
         LBProductUpdate.setText("ATF");
         LBPricePerLitreUpdate.setText("GH¢35");
         oil_ProductID = 6;
+        System.out.println(oil_ProductID);
     }
 
     @FXML
@@ -175,6 +181,7 @@ public class EmployeeWindowController {
         LBProductUpdate.setText("Motor F");
         LBPricePerLitreUpdate.setText("GH¢13");
         oil_ProductID = 9;
+        System.out.println(oil_ProductID);
     }
 
     @FXML
@@ -183,6 +190,7 @@ public class EmployeeWindowController {
         LBProductUpdate.setText("Brake F");
         LBPricePerLitreUpdate.setText("GH¢23");
         oil_ProductID = 7;
+        System.out.println(oil_ProductID);
     }
 
     @FXML
@@ -191,6 +199,7 @@ public class EmployeeWindowController {
         LBProductUpdate.setText("Fuel I");
         LBPricePerLitreUpdate.setText("GH¢15");
         oil_ProductID = 8;
+        System.out.println(oil_ProductID);
     }
 
     @FXML
@@ -222,19 +231,19 @@ public class EmployeeWindowController {
                     price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 22.5) * 100.0) / 100.0;
                     litresBought = Double.parseDouble(TFLitresBought.getText());
                     TFCostPrice.setText("GH¢" + price);
-                } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Automatic Transmission Fluid D3")) {
+                } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "ATF")) {
                     price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 35) * 100.0) / 100.0;
                     litresBought = Double.parseDouble(TFLitresBought.getText());
                     TFCostPrice.setText("GH¢" + price);
-                } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Brake Fluid Dot 3")) {
+                } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Brake F")) {
                     price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 23) * 100.0) / 100.0;
                     litresBought = Double.parseDouble(TFLitresBought.getText());
                     TFCostPrice.setText("GH¢" + price);
-                } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Fuel Injector")) {
+                } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Fuel I")) {
                     price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 15) * 100.0) / 100.0;
                     litresBought = Double.parseDouble(TFLitresBought.getText());
                     TFCostPrice.setText("GH¢" + price);
-                } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Motor Flush")) {
+                } else if (Objects.equals(LBTypeUpdate.getText(), "Fluids") && Objects.equals(LBProductUpdate.getText(), "Motor F")) {
                     price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 13) * 100.0) / 100.0;
                     litresBought = Double.parseDouble(TFLitresBought.getText());
                     TFCostPrice.setText("GH¢" + price);
@@ -328,28 +337,27 @@ public class EmployeeWindowController {
     private void ContinueButtonOnAction() throws IOException {
         WindowManipulators.AddAnotherScene("ConfirmPurchase.fxml", "Confirm Purchase");
         //Data from this window needs to be shared, so we call shareData to share that data.
-        SharedData.OutgoingEmployeeSharedData(TFCustomerName.getText(),TFVehicleNumber.getText(),TFTelNumber.getText(), LBTypeUpdate.getText(),
-                LBProductUpdate.getText(), String.valueOf(litresBought), String.valueOf(price), oil_ProductID);
+        SharedData.OutgoingEmployeeSharedData(TFCustomerName.getText(), TFVehicleNumber.getText(), TFTelNumber.getText(), LBTypeUpdate.getText(),
+                LBProductUpdate.getText(), (float) litresBought, (float) price, oil_ProductID, UserLabelId.getText());
     }
 
     //This function takes care of the time and date.
     @FXML
     private void BorderBoxOnMouseEntered() {
         //This function is called once, only at the start when the scene is changed.
-        if (timeInitiated) {
+        if (isTimeInitiated) {
             TimeAndDateUpdate();
-
         }
     }
 
     @FXML
-    private void USRButtonOnAction(){
+    private void USRButtonOnAction() {
 
     }
 
     //This function updates and controls the time and date on the Employee Window.
     public void TimeAndDateUpdate() {
-        timeInitiated = false;
+        isTimeInitiated = false;
         //When the employee window is called, set the day.
         //The day is set on a label that will house the date.
         Date date = new Date();
@@ -376,11 +384,6 @@ public class EmployeeWindowController {
         // Because the Timer is a java thread and not a javafx thread, it needs to be stooped, otherwise when the scene is closed
         // using the close button, the timer thread will continue running.
         Stage stage = (Stage) BPane.getScene().getWindow();
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent windowEvent) {
-                timer.cancel();
-            }
-        });
+        stage.setOnCloseRequest(windowEvent -> timer.cancel());
     }
 }
