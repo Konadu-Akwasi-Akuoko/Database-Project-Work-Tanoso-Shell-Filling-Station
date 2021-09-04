@@ -88,12 +88,12 @@ public class DBQueries {
     }
 
     public void DBInsertValuesIntoEmployeeTB(String cus_Name, String cus_vNum, int cus_tNum,
-                                             float cus_pPaid, float cus_lBought, int oilP_id, String emp_Ini) {
+                                             float cus_pPaid, float cus_lBought, int oilP_id, String emp_Ini, String cus_Date) {
         connection = ConnectDB(connection);
         try {
             preparedSQLStatement = connection.prepareStatement("INSERT INTO CUSTOMER" +
-                    "(cus_Name,cus_vehicleNum,cus_telephoneNum,cus_pricePaid,cus_litresBought,op_id,emp_Initials)" +
-                    "VALUES (?,?,?,?,?,?,?)");
+                    "(cus_Name,cus_vehicleNum,cus_telephoneNum,cus_pricePaid,cus_litresBought,op_id,emp_Initials,cus_dateBought)" +
+                    "VALUES (?,?,?,?,?,?,?,?)");
             preparedSQLStatement.setString(1, cus_Name);
             preparedSQLStatement.setString(2, cus_vNum);
             preparedSQLStatement.setInt(3, cus_tNum);
@@ -101,6 +101,7 @@ public class DBQueries {
             preparedSQLStatement.setFloat(5, cus_lBought);
             preparedSQLStatement.setInt(6, oilP_id);
             preparedSQLStatement.setString(7, emp_Ini);
+            preparedSQLStatement.setString(8,cus_Date);
             //Result set here must be integer, because it is executing an update.
             resultSetInt = preparedSQLStatement.executeUpdate();
             System.out.println(resultSet);

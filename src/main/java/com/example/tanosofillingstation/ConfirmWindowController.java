@@ -2,6 +2,7 @@ package com.example.tanosofillingstation;
 
 import com.example.tanosofillingstation.mycustompackages.DBQueries;
 import com.example.tanosofillingstation.mycustompackages.SharedData;
+import com.example.tanosofillingstation.mycustompackages.WindowManipulators;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -35,6 +36,7 @@ public class ConfirmWindowController {
     float cus_lBought;
     static int oilP_id;
     String emp_Ini;
+    String cus_Date;
     //This boolean will make sure the MouseEnteredOnLoad run only once.
     boolean hasRun = false;
 
@@ -60,6 +62,7 @@ public class ConfirmWindowController {
                 cus_lBought = Float.parseFloat(sharedValues[5]);
                 oilP_id = Integer.parseInt(sharedValues[7]);
                 emp_Ini = sharedValues[8];
+                cus_Date = sharedValues[9];
             } catch (NumberFormatException e) {
                 System.out.println("Number format exception on MouseEntered: " + e + e.getMessage());
             }
@@ -76,11 +79,10 @@ public class ConfirmWindowController {
 
     @FXML
     private void ConfirmBTOnAction() {
-        System.out.println("Confirmation made.");
         //When you confirm all text on the EmployeeWindow must also be cleared.
         //SQL queries below.
-        dbQueries.DBInsertValuesIntoEmployeeTB(cus_Name, cus_vNum, cus_tNum, cus_pPaid, cus_lBought, oilP_id, emp_Ini);
-        System.out.println(oilP_id);
+        dbQueries.DBInsertValuesIntoEmployeeTB(cus_Name, cus_vNum, cus_tNum, cus_pPaid, cus_lBought, oilP_id, emp_Ini, cus_Date);
+        WindowManipulators.CloseStage(BTConConfirm);
     }
 
 }

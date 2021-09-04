@@ -215,7 +215,7 @@ public class EmployeeWindowController {
                     price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 5.195) * 100.0) / 100.0;
                     litresBought = Double.parseDouble(TFLitresBought.getText());
                     TFCostPrice.setText("GH¢" + price);
-                } else if (Objects.equals(LBTypeUpdate.getText(), "Gasoline") && Objects.equals(LBProductUpdate.getText(), "Super Petrol")) {
+                } else if (Objects.equals(LBTypeUpdate.getText(), "Gasoline") && Objects.equals(LBProductUpdate.getText(), "Super P")) {
                     price = Math.round((Double.parseDouble(TFLitresBought.getText()) * 5.265) * 100.0) / 100.0;
                     litresBought = Double.parseDouble(TFLitresBought.getText());
                     TFCostPrice.setText("GH¢" + price);
@@ -338,7 +338,7 @@ public class EmployeeWindowController {
         WindowManipulators.AddAnotherScene("ConfirmPurchase.fxml", "Confirm Purchase");
         //Data from this window needs to be shared, so we call shareData to share that data.
         SharedData.OutgoingEmployeeSharedData(TFCustomerName.getText(), TFVehicleNumber.getText(), TFTelNumber.getText(), LBTypeUpdate.getText(),
-                LBProductUpdate.getText(), (float) litresBought, (float) price, oil_ProductID, UserLabelId.getText());
+                LBProductUpdate.getText(), (float) litresBought, (float) price, oil_ProductID, UserLabelId.getText(), LBDate.getText());
     }
 
     //This function takes care of the time and date.
@@ -358,11 +358,13 @@ public class EmployeeWindowController {
     //This function updates and controls the time and date on the Employee Window.
     public void TimeAndDateUpdate() {
         isTimeInitiated = false;
+
         //When the employee window is called, set the day.
         //The day is set on a label that will house the date.
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("E dd-MM-yyyy");
         LBDate.setText(simpleDateFormat.format(date));
+
         //Set the time, and it will update itself every second with the help of timer and timerTask.
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -380,6 +382,7 @@ public class EmployeeWindowController {
 
         //The user label needs to be updated with the username.
         UserLabelId.setText(DBQueries.emp_Ini);
+
         //The timer needs to be stopped when the stage is coming to close.
         // Because the Timer is a java thread and not a javafx thread, it needs to be stooped, otherwise when the scene is closed
         // using the close button, the timer thread will continue running.

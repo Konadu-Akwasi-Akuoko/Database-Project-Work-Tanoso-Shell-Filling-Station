@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1220.0" style="-fx-background-color: #e3dfd3;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tanosofillingstation.AdminWindowController">
+   <top>
+      <AnchorPane prefHeight="64.0" prefWidth="1220.0" style="-fx-background-color: #e3d991;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="112.0" layoutY="15.0" prefHeight="16.0" prefWidth="247.0" text="1st January 0000">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="52.0" fitWidth="59.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/1200px-Shell_logo.svg.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="112.0" layoutY="33.0" prefWidth="107.0" text="00:00:00 AA">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Circle fill="#e3dfd3" layoutX="1181.0" layoutY="32.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1157.0" layoutY="8.0" prefHeight="48.0" prefWidth="49.0" text="AK" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="1157.0" layoutY="9.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="49.0" text="USR" visible="false" />
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="705.0" prefWidth="1220.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="546.0" layoutY="14.0" text="Tue 31-08-2021">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" rotate="-180.0">
+               <image>
+                  <Image url="@../../../../../../../../../../../../../home/codedkaa/Downloads/icons8-next-page-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1166.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../../../../home/codedkaa/Downloads/icons8-next-page-50.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="15.0" layoutY="12.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="42.0" text="PreviousButton" />
+            <Button layoutX="1165.0" layoutY="12.0" mnemonicParsing="false" onAction="#AddRowToGP" prefHeight="39.0" prefWidth="42.0" text="NextButton" />
+            <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="20.0" layoutY="64.0" prefHeight="629.0" prefWidth="1180.0" style="-fx-background: #e3dfd3; -fx-border-color: #e3dfd3;">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="621.0" prefWidth="1173.0">
+                     <children>
+                        <GridPane gridLinesVisible="true" layoutX="11.0" layoutY="14.0" prefHeight="37.0" prefWidth="1151.0">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Date" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Emp Name" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="18.0" prefWidth="132.0" text="Vehicle Number" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="18.0" prefWidth="70.0" text="Oil Type" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="18.0" prefWidth="92.0" text="Oil Product" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Price (GHS)" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Litres Bought (Ltrs)" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <GridPane fx:id="GPDataInDB" gridLinesVisible="true" layoutX="11.0" layoutY="51.0" prefHeight="37.0" prefWidth="1151.0">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Tue 31-08-2021" />
+                              <Label text="Akuoko Konadu Akwasi" GridPane.columnIndex="1" />
+                              <Label text="AS 8734 19" GridPane.columnIndex="2" />
+                              <Label text="Gasoline" GridPane.columnIndex="3" />
+                              <Label text="Engine Oil" GridPane.columnIndex="4" />
+                              <Label text="22.5" GridPane.columnIndex="5" />
+                              <Label text="1" GridPane.columnIndex="6" />
+                           </children>
+                        </GridPane>
+                     </children></AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </center>
+   <bottom>
+      <AnchorPane prefHeight="61.0" prefWidth="1220.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane layoutX="729.0" layoutY="19.0" prefHeight="23.0" prefWidth="477.0">
+              <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Total">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="22.5" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="1" GridPane.columnIndex="2">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>

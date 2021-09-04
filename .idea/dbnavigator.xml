@@ -25,27 +25,27 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="0459cdba-7b03-4e01-866e-5f6e0097491d">
+      <connection connection-id="332d823d-a587-4995-a7bb-e19e70effb65">
         <schema name="Tanoso_Filling_Station" object-types="table, view, procedure, function, constraint, index, column, dataset trigger" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="0459cdba-7b03-4e01-866e-5f6e0097491d">
+    <connection id="332d823d-a587-4995-a7bb-e19e70effb65">
       <console name="DBTFS" type="STANDARD" schema="mysql" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="332d823d-a587-4995-a7bb-e19e70effb65" object-ref="schemas/Tanoso_Filling_Station/tables/CUSTOMER" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="0459cdba-7b03-4e01-866e-5f6e0097491d" />
+    <connection id="332d823d-a587-4995-a7bb-e19e70effb65" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="0459cdba-7b03-4e01-866e-5f6e0097491d" dataset="Tanoso_Filling_Station.PURCHASE" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="0459cdba-7b03-4e01-866e-5f6e0097491d" dataset="Tanoso_Filling_Station.OIL_PRODUCT" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="0459cdba-7b03-4e01-866e-5f6e0097491d" dataset="Tanoso_Filling_Station.EMPLOYEE" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="0459cdba-7b03-4e01-866e-5f6e0097491d" dataset="Tanoso_Filling_Station.CUSTOMER" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="332d823d-a587-4995-a7bb-e19e70effb65" dataset="Tanoso_Filling_Station.EMPLOYEE" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="332d823d-a587-4995-a7bb-e19e70effb65" dataset="Tanoso_Filling_Station.CUSTOMER" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers>
@@ -75,7 +75,7 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="0459cdba-7b03-4e01-866e-5f6e0097491d" active="true">
+      <connection id="332d823d-a587-4995-a7bb-e19e70effb65" active="true">
         <database>
           <name value="DBTFS" />
           <description value="" />
@@ -117,7 +117,7 @@
           <session-management value="true" />
           <ddl-file-binding value="true" />
           <database-logging value="false" />
-          <connect-automatically value="false" />
+          <connect-automatically value="true" />
           <restore-workspace value="true" />
           <restore-workspace-deep value="true" />
           <environment-type value="default" />

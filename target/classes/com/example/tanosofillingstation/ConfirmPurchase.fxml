@@ -128,7 +128,7 @@
                   </Label>
                </children>
             </GridPane>
-            <Button fx:id="BTConCancel" layoutX="264.0" layoutY="506.0" mnemonicParsing="false" onAction="#CancelBTOnAction" style="-fx-background-color: #e3d991;" text="Cancel">
+            <Button fx:id="BTConCancel" layoutX="264.0" layoutY="506.0" mnemonicParsing="false" style="-fx-background-color: #e3d991;" text="Cancel">
                <font>
                   <Font size="16.0" />
                </font>
