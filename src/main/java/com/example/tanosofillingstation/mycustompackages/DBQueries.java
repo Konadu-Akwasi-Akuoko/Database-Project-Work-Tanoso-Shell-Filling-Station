@@ -11,6 +11,9 @@ public class DBQueries {
     static int resultSetInt;
     boolean[] Authenticate_Authorize = new boolean[2];
 
+    //The amount of arrays to create when you are on the admin window.
+    public static int numberOfRows;
+
     //Employee initials must be used on the Employee window, therefore we need to store it as a static variable.
     public static String emp_Ini;
 
@@ -63,8 +66,6 @@ public class DBQueries {
                 String emp_Status = resultSet.getString(2);
                 String emp_Name = resultSet.getString(3);
                 emp_Ini = resultSet.getString(4);
-                System.out.println(emp_Ini);
-                System.out.println("The emp_id is:" + emp_id + " " + emp_Status + " " + emp_Name);
                 Authenticate_Authorize[0] = true;
                 //If the credentials are true, authorize the user, if the user is an admin make Authenticate_Authorize[1] true, false otherwise.
                 if (Objects.equals(emp_Status, "admin")) {
@@ -101,7 +102,7 @@ public class DBQueries {
             preparedSQLStatement.setFloat(5, cus_lBought);
             preparedSQLStatement.setInt(6, oilP_id);
             preparedSQLStatement.setString(7, emp_Ini);
-            preparedSQLStatement.setString(8,cus_Date);
+            preparedSQLStatement.setString(8, cus_Date);
             //Result set here must be integer, because it is executing an update.
             resultSetInt = preparedSQLStatement.executeUpdate();
             System.out.println(resultSet);
@@ -115,5 +116,102 @@ public class DBQueries {
                 System.out.println("Error in sql resultSet.close: " + e.getMessage() + " " + e);
             }
         }
+    }
+
+    public void SetCount(String dateSelected) {
+        try {
+            connection = ConnectDB(connection);
+            preparedSQLStatement = connection.prepareStatement("SELECT COUNT(cus_dateBought) FROM CUSTOMER WHERE cus_dateBought = ?");
+            preparedSQLStatement.setString(1, dateSelected);
+            resultSet = preparedSQLStatement.executeQuery();
+            if (resultSet.next()) {
+                numberOfRows = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL exception in count of array, on admin window:" + e.getMessage() + " " + e);
+        } finally {
+            DBCloseConnections();
+        }
+    }
+
+    public String[] GetDataDate(String dateSelected) {
+        //Create an array to store the date in, then later return it.
+        String[] dateArray = new String[numberOfRows];
+        try {
+            //Opening connections
+            connection = ConnectDB(connection);
+            preparedSQLStatement = connection.prepareStatement("SELECT cus_dateBought " +
+                    "FROM CUSTOMER WHERE  cus_dateBought = ?");
+            preparedSQLStatement.setString(1, dateSelected);
+            resultSet = preparedSQLStatement.executeQuery();
+            if (resultSet.next()) {
+                for (int i = 1; i <= resultSet.getRow(); i++) {
+                    dateArray[i - 1] = resultSet.getString(1);
+                    System.out.println(dateArray[i - 1]);
+                    resultSet.next();
+                }
+            }
+
+
+        } catch (SQLException e) {
+            System.out.println("SQL exception when retrieving data to share on admin window : " + e.getMessage() + " " + e);
+        } finally {
+            DBCloseConnections();
+        }
+        return dateArray;
+    }
+
+    //Getting results of employee
+    public String[] GetDataEmpIni(String dateSelected) {
+        //Create an array to store the date in, then later return it.
+        String[] empIniArray = new String[numberOfRows];
+        try {
+            //Opening connections
+            connection = ConnectDB(connection);
+            preparedSQLStatement = connection.prepareStatement("SELECT emp_Initials " +
+                    "FROM CUSTOMER WHERE  cus_dateBought = ?");
+            preparedSQLStatement.setString(1, dateSelected);
+            resultSet = preparedSQLStatement.executeQuery();
+            if (resultSet.next()) {
+                for (int i = 1; i <= resultSet.getRow(); i++) {
+                    empIniArray[i - 1] = resultSet.getString(1);
+                    System.out.println(empIniArray[i - 1]);
+                    resultSet.next();
+                }
+            }
+
+
+        } catch (SQLException e) {
+            System.out.println("SQL exception when retrieving data to share on admin window : " + e.getMessage() + " " + e);
+        } finally {
+            DBCloseConnections();
+        }
+        return empIniArray;
+    }
+
+    //Getting results of employee
+    public String[] GetDataVehicleNum(String dateSelected) {
+        //Create an array to store the date in, then later return it.
+        String[] vehicleNumArray = new String[numberOfRows];
+        try {
+            //Opening connections
+            connection = ConnectDB(connection);
+            preparedSQLStatement = connection.prepareStatement("SELECT cus_vehicleNum " +
+                    "FROM CUSTOMER WHERE  cus_dateBought = ?");
+            preparedSQLStatement.setString(1, dateSelected);
+            resultSet = preparedSQLStatement.executeQuery();
+            if (resultSet.next()) {
+                for (int i = 1; i <= resultSet.getRow(); i++) {
+                    vehicleNumArray[i - 1] = resultSet.getString(1);
+                    System.out.println(vehicleNumArray[i - 1]);
+                    resultSet.next();
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL exception when retrieving data to share on admin window : " + e.getMessage() + " " + e);
+        } finally {
+            DBCloseConnections();
+        }
+        return vehicleNumArray;
     }
 }

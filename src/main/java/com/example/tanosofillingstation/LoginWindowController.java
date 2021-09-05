@@ -35,8 +35,7 @@ public class LoginWindowController {
         if (authenticate_authorize[0]) {
             //If authentication is true, then authorize the user. True means the user is an admin, otherwise the user is an employee.
             if (authenticate_authorize[1]) {
-                WindowManipulators.ChangeScene(/*"AdminWindow.fxml", "Tanoso Filling Station - Administrator", BTLogIn*/
-                        "EmployeeWindow.fxml", "Tanoso Filling Station - Employee", BTLogIn);
+                WindowManipulators.ChangeScene("AdminWindow.fxml", "Tanoso Filling Station - Administrator", BTLogIn);
             } else {
                 WindowManipulators.ChangeScene("EmployeeWindow.fxml", "Tanoso Filling Station - Employee", BTLogIn);
             }

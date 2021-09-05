@@ -356,7 +356,7 @@ public class EmployeeWindowController {
     }
 
     //This function updates and controls the time and date on the Employee Window.
-    public void TimeAndDateUpdate() {
+    private void TimeAndDateUpdate() {
         isTimeInitiated = false;
 
         //When the employee window is called, set the day.
@@ -388,5 +388,9 @@ public class EmployeeWindowController {
         // using the close button, the timer thread will continue running.
         Stage stage = (Stage) BPane.getScene().getWindow();
         stage.setOnCloseRequest(windowEvent -> timer.cancel());
+    }
+
+    public void CallTheCancelButton(){
+        CancelButtonOnAction();
     }
 }
