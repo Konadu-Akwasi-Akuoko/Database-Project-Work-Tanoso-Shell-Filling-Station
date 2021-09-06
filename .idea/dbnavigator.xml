@@ -26,7 +26,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="332d823d-a587-4995-a7bb-e19e70effb65">
-        <schema name="Tanoso_Filling_Station" object-types="table, view, procedure, function, column" />
+        <schema name="Tanoso_Filling_Station" object-types="table, view, procedure, function, constraint, index, column, dataset trigger" />
       </connection>
     </loaded-nodes>
   </component>

@@ -106,8 +106,6 @@ public class AdminWindowController {
     private Label LBCusName8;
     @FXML
     private Label LBCusName9;
-    private Label[] CusNameLabelArray = {LBCusName0, LBCusName1, LBCusName2, LBCusName3, LBCusName3, LBCusName4,
-            LBCusName5, LBCusName6, LBCusName7, LBCusName8, LBCusName9};
 
     //OilProductID labels
     @FXML
@@ -130,8 +128,6 @@ public class AdminWindowController {
     private Label LBoilProdID8;
     @FXML
     private Label LBoilProdID9;
-    private Label[] OilProductLabelArray = {LBoilProdID0, LBoilProdID1, LBoilProdID2, LBoilProdID3, LBoilProdID4,
-            LBoilProdID5, LBoilProdID6, LBoilProdID7, LBoilProdID8, LBoilProdID9};
 
     //Price labels
     @FXML
@@ -154,8 +150,6 @@ public class AdminWindowController {
     private Label LBPrice8;
     @FXML
     private Label LBPrice9;
-    private Label[] PriceLabelArray = {LBPrice0, LBPrice1, LBPrice2, LBPrice3, LBPrice4,
-            LBPrice5, LBPrice6, LBPrice7, LBPrice8, LBPrice9};
 
     //LitresBought label
     @FXML
@@ -178,11 +172,13 @@ public class AdminWindowController {
     private Label LBLitresB8;
     @FXML
     private Label LBLitresB9;
-    private Label[] LitresBLabelArray = {LBLitresB0, LBLitresB1, LBLitresB2, LBLitresB3, LBLitresB4,
-            LBLitresB5, LBLitresB6, LBLitresB7, LBLitresB8, LBLitresB9};
 
     @FXML
     private Label usrLabel;
+    @FXML
+    private Label LBSumOfPrice;
+    @FXML
+    private Label LBSumOfLitresBought;
 
     //Boolean to check if the time has started.
     private boolean isTimeInitiated = false;
@@ -258,5 +254,46 @@ public class AdminWindowController {
         for (int i = 0; i < DBQueries.numberOfRows; i++) {
             VehicleNumLabelArray[i].setText(VehicleNumArray[i]);
         }
+
+        //Updating rows for vehicle Number
+        Label[] CusNameLabelArray = {LBCusName0, LBCusName1, LBCusName2, LBCusName3, LBCusName4,
+                LBCusName5, LBCusName6, LBCusName7, LBCusName8, LBCusName9};
+        String[] CustomerNameArray = dbQueries.GetDataCustomerName(LBSelectedDate.getText());
+        for (int i = 0; i < DBQueries.numberOfRows; i++) {
+            CusNameLabelArray[i].setText(CustomerNameArray[i]);
+        }
+
+        //Updating rows for oil product ID
+        Label[] OilProductLabelArray = {LBoilProdID0, LBoilProdID1, LBoilProdID2, LBoilProdID3, LBoilProdID4,
+                LBoilProdID5, LBoilProdID6, LBoilProdID7, LBoilProdID8, LBoilProdID9};
+        String[] OilProductIDArray = dbQueries.GetDataOilProdID(LBSelectedDate.getText());
+        for (int i = 0; i < DBQueries.numberOfRows; i++) {
+            OilProductLabelArray[i].setText(OilProductIDArray[i]);
+        }
+
+        //Updating rows for customer price paid
+        Label[] PriceLabelArray = {LBPrice0, LBPrice1, LBPrice2, LBPrice3, LBPrice4,
+                LBPrice5, LBPrice6, LBPrice7, LBPrice8, LBPrice9};
+        double[] pricePaidArray = dbQueries.GetDataPricePaid(LBSelectedDate.getText());
+        for (int i = 0; i < DBQueries.numberOfRows; i++) {
+            PriceLabelArray[i].setText(String.valueOf(pricePaidArray[i]));
+        }
+
+        //Updating rows for customer litres bought
+        Label[] LitresBLabelArray = {LBLitresB0, LBLitresB1, LBLitresB2, LBLitresB3, LBLitresB4,
+                LBLitresB5, LBLitresB6, LBLitresB7, LBLitresB8, LBLitresB9};
+        double[] litresBoughtArray = dbQueries.GetDataLitresBought(LBSelectedDate.getText());
+        for (int i = 0; i < DBQueries.numberOfRows; i++) {
+            LitresBLabelArray[i].setText(String.valueOf(litresBoughtArray[i]));
+        }
+
+        //Update sum of the price.
+        float sumOfPrice = ((float) dbQueries.GetDataSumPricePaid(LBSelectedDate.getText()));
+        String sumOfPriceRounded = String.valueOf(sumOfPrice);
+        LBSumOfPrice.setText(sumOfPriceRounded);
+
+        //Update sum of the litresBought
+        String sumOfLitresBought = String.valueOf(dbQueries.GetDataSumLitresBought(LBSelectedDate.getText()));
+        LBSumOfLitresBought.setText(sumOfLitresBought);
     }
 }

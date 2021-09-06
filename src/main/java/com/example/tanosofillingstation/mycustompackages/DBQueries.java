@@ -189,7 +189,7 @@ public class DBQueries {
         return empIniArray;
     }
 
-    //Getting results of employee
+    //Getting results of vehicle number
     public String[] GetDataVehicleNum(String dateSelected) {
         //Create an array to store the date in, then later return it.
         String[] vehicleNumArray = new String[numberOfRows];
@@ -213,5 +213,153 @@ public class DBQueries {
             DBCloseConnections();
         }
         return vehicleNumArray;
+    }
+
+    //Getting results of customer name
+    public String[] GetDataCustomerName(String dateSelected) {
+        //Create an array to store the date in, then later return it.
+        String[] customerNameArray = new String[numberOfRows];
+        try {
+            //Opening connections
+            connection = ConnectDB(connection);
+            preparedSQLStatement = connection.prepareStatement("SELECT cus_Name " +
+                    "FROM CUSTOMER WHERE  cus_dateBought = ?");
+            preparedSQLStatement.setString(1, dateSelected);
+            resultSet = preparedSQLStatement.executeQuery();
+            if (resultSet.next()) {
+                for (int i = 1; i <= resultSet.getRow(); i++) {
+                    customerNameArray[i - 1] = resultSet.getString(1);
+                    System.out.println(customerNameArray[i - 1]);
+                    resultSet.next();
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL exception when retrieving data to share on admin window : " + e.getMessage() + " " + e);
+        } finally {
+            DBCloseConnections();
+        }
+        return customerNameArray;
+    }
+
+    //Getting results of oilProduct ID
+    public String[] GetDataOilProdID(String dateSelected) {
+        //Create an array to store the date in, then later return it.
+        String[] oilProductArray = new String[numberOfRows];
+        try {
+            //Opening connections
+            connection = ConnectDB(connection);
+            preparedSQLStatement = connection.prepareStatement("SELECT op_id " +
+                    "FROM CUSTOMER WHERE  cus_dateBought = ?");
+            preparedSQLStatement.setString(1, dateSelected);
+            resultSet = preparedSQLStatement.executeQuery();
+            if (resultSet.next()) {
+                for (int i = 1; i <= resultSet.getRow(); i++) {
+                    oilProductArray[i - 1] = resultSet.getString(1);
+                    System.out.println(oilProductArray[i - 1]);
+                    resultSet.next();
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL exception when retrieving data to share on admin window : " + e.getMessage() + " " + e);
+        } finally {
+            DBCloseConnections();
+        }
+        return oilProductArray;
+    }
+
+    //Getting results of oilProduct ID
+    public double[] GetDataPricePaid(String dateSelected) {
+        //Create an array to store the date in, then later return it.
+        double[] pricePaidArray = new double[numberOfRows];
+        try {
+            //Opening connections
+            connection = ConnectDB(connection);
+            preparedSQLStatement = connection.prepareStatement("SELECT cus_pricePaid " +
+                    "FROM CUSTOMER WHERE  cus_dateBought = ?");
+            preparedSQLStatement.setString(1, dateSelected);
+            resultSet = preparedSQLStatement.executeQuery();
+            if (resultSet.next()) {
+                for (int i = 1; i <= resultSet.getRow(); i++) {
+                    pricePaidArray[i - 1] = resultSet.getDouble(1);
+                    System.out.println(pricePaidArray[i - 1]);
+                    resultSet.next();
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL exception when retrieving data to share on admin window : " + e.getMessage() + " " + e);
+        } finally {
+            DBCloseConnections();
+        }
+        return pricePaidArray;
+    }
+
+    //Getting results of oilProduct ID
+    public double[] GetDataLitresBought(String dateSelected) {
+        //Create an array to store the date in, then later return it.
+        double[] litresBoughtArray = new double[numberOfRows];
+        try {
+            //Opening connections
+            connection = ConnectDB(connection);
+            preparedSQLStatement = connection.prepareStatement("SELECT cus_litresBought " +
+                    "FROM CUSTOMER WHERE  cus_dateBought = ?");
+            preparedSQLStatement.setString(1, dateSelected);
+            resultSet = preparedSQLStatement.executeQuery();
+            if (resultSet.next()) {
+                for (int i = 1; i <= resultSet.getRow(); i++) {
+                    litresBoughtArray[i - 1] = resultSet.getDouble(1);
+                    System.out.println(litresBoughtArray[i - 1]);
+                    resultSet.next();
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL exception when retrieving data to share on admin window : " + e.getMessage() + " " + e);
+        } finally {
+            DBCloseConnections();
+        }
+        return litresBoughtArray;
+    }
+
+    //Getting results of Sum of pricePaid
+    public double GetDataSumPricePaid(String dateSelected) {
+        //Create an array to store the date in, then later return it.
+        double sumPrice = 0;
+        try {
+            //Opening connections
+            connection = ConnectDB(connection);
+            preparedSQLStatement = connection.prepareStatement("SELECT SUM(cus_pricePaid) FROM CUSTOMER WHERE " +
+                    "cus_dateBought = ?");
+            preparedSQLStatement.setString(1, dateSelected);
+            resultSet = preparedSQLStatement.executeQuery();
+            if (resultSet.next()) {
+                sumPrice = resultSet.getDouble(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL exception when retrieving data to share on admin window : " + e.getMessage() + " " + e);
+        } finally {
+            DBCloseConnections();
+        }
+        return sumPrice;
+    }
+
+    //Getting results of Sum of pricePaid
+    public float GetDataSumLitresBought(String dateSelected) {
+        //Create an array to store the date in, then later return it.
+        float sumLitresBought = 0;
+        try {
+            //Opening connections
+            connection = ConnectDB(connection);
+            preparedSQLStatement = connection.prepareStatement("SELECT SUM(cus_litresBought) FROM CUSTOMER WHERE " +
+                    "cus_dateBought = ?");
+            preparedSQLStatement.setString(1, dateSelected);
+            resultSet = preparedSQLStatement.executeQuery();
+            if (resultSet.next()) {
+                sumLitresBought = resultSet.getFloat(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL exception when retrieving data to share on admin window : " + e.getMessage() + " " + e);
+        } finally {
+            DBCloseConnections();
+        }
+        return sumLitresBought;
     }
 }
